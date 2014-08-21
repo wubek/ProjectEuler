@@ -6,17 +6,18 @@ For example, the proper divisors of 220 are 1, 2, 4, 5, 10, 11, 20, 22, 44, 55 a
 Evaluate the sum of all the amicable numbers under 10000.
 """
 from math import ceil
+import datetime
 
 def create_div_dictionary(number):
-	dict = {1:[1]}
-	for i in range(2,number-1):
-		div_list = [1, i]
+	dict = {}
+	for i in range(2,number+1):
+		div_list = [1]
 		for j in range(2, int(i**0.5)+1):
 			if i % j == 0:
 				div_list.append(j)
 				tmp = i / j
 				if tmp != j:
-					div_list.append(tmp)
+					div_list.append(int(tmp))
 		dict[i] = div_list
 	return dict
 
@@ -31,13 +32,26 @@ def create_div_sum_dictionary(dict):
 	return new_dict
 		
 def find_amicables(number):
-	lst = []
+	amicable = {}
 	dict = create_div_dictionary(number)
 	div_sum_dict = create_div_sum_dictionary(dict)
 	
-	return lst
+	for key in div_sum_dict:
+		for ami_key in div_sum_dict:
+			if key == div_sum_dict[ami_key] and ami_key == div_sum_dict[key] and key != ami_key:
+				if key not in amicable.values():
+					amicable[key] = ami_key
+	return amicable
 
 
-print_dict(create_div_dictionary(20))
-print_dict(create_div_sum_dictionary(create_div_dictionary(20)))
+task = 10000
+
+time = datetime.datetime.now()
+amicables = find_amicables(task)
+print("Sum of amicable numbers:", sum(amicables)+sum(amicables.values()))
+time = datetime.datetime.now() - time
+print("Time:", time)
+print("Amicable numbers found:")
+print_dict(amicables)
+
 
