@@ -104,13 +104,40 @@ Work out the first ten digits of the sum of the following one-hundred 50-digit n
 53503534226472524250874054075591789781264330331690
 '''
 
+def sum_column(longs, col, transfer = 0):
+    sum_of_column = transfer
+    for i in longs:
+        sum_of_column += int(i[col])
+    return sum_of_column
+
+def adding_string_numbers(longs):
+    transfer, out_of_range = 0, 0
+    result, string_repr = [], ''
+    for i in range(len(longs[0]) - 1, -1, -1):
+        temp = sum_column(longs, i, transfer)
+        transfer = temp // 10
+        result.append(str(temp % 10))
+        if i == 0:
+            out_of_range += transfer
+    for char in str(out_of_range):
+        result.append(char)
+    result.reverse()
+    for char in result:
+        string_repr += char 
+    return string_repr
+
 def get_first_n_digits_of_number(number, n):
     return int(str(number)[0:10])
 
 if __name__ == "__main__":
+    longs = []
     sum_of_input_numbers = 0
     with open("euler13.input", "r") as input_data:
         for line in input_data:
+            longs.append(line[:-1]) # without last char
             sum_of_input_numbers += int(line)
 
+    # Uses python property - having big range long numbers
     print(get_first_n_digits_of_number(sum_of_input_numbers, 10))
+    # Uses operations on strings
+    print(adding_string_numbers(longs)[0:10])
