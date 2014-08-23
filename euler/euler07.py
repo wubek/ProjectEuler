@@ -12,7 +12,7 @@ i = 2
 while not_found:
 	if is_prime(i):
 		counter += 1
-		print(counter,".",i)
+        print(counter,".",i)
 	if counter == 10001:
 		not_found = False
 	else:

@@ -10,7 +10,7 @@ def is_divisible(number, limit):
 	return True
 
 def is_divisible_lst(number, lst):
-	for i in lst:
+    for i in lst:
 		if number % i != 0:
 			return False
 	return True

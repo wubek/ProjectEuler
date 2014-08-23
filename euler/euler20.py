@@ -8,7 +8,7 @@ Find the sum of the digits in the number 100!
 def factorial(number):
 	starter = 1
 	for i in range(2,number+1):
-		starter *= i
+        starter *= i
 	return starter
 
 def sum_of_digits(number):

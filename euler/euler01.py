@@ -5,7 +5,7 @@ Find the sum of all the multiples of 3 or 5 below 1000.
 
 def sum_of_multiples(limit, numbers):
 	lst = []
-	for number in numbers:
+    for number in numbers:
 		lst = find_multiples(limit, number, lst)
 	return sum(lst)
 	

@@ -25,7 +25,7 @@ The four adjacent digits in the 1000-digit number that have the greatest product
 Find the thirteen adjacent digits in the 1000-digit number that have the greatest product. What is the value of this product?
 """
 def max_product_of_adjacent(lst, amount):
-	max = 0
+    max = 0
 	position = 0
 	for i in range(0,len(lst)-amount-1):
 		tmp = product_of_converted(lst, amount, i)

@@ -2,7 +2,7 @@
 What is the largest prime factor of the number 600851475143 ?"""
 
 def is_prime(number):
-	counter = 2
+    counter = 2
 	while counter**2 < number:
 		if number % counter == 0:
 			return False

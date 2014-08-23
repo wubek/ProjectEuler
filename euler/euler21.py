@@ -7,13 +7,14 @@ Evaluate the sum of all the amicable numbers under 10000.
 """
 from math import ceil
 import datetime
+import operator
 
 def create_div_dictionary(number):
 	dict = {}
 	for i in range(2,number+1):
 		div_list = [1]
 		for j in range(2, int(i**0.5)+1):
-			if i % j == 0:
+            if i % j == 0:
 				div_list.append(j)
 				tmp = i / j
 				if tmp != j:

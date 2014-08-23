@@ -11,7 +11,7 @@ def eratosthenes_sieve(limit):
 	sieve[1] = False
 	for i in range(2, int(sqrt(limit+1))+1):
 		if sieve[i] == True:
-			for j in range(i**2, limit+1, i):
+            for j in range(i**2, limit+1, i):
 				sieve[j] = False
 	return sieve
 	
