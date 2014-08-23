@@ -20,4 +20,4 @@ def square_of_sum(number):
     return square_of_sum**2
 
 task = 100
-print(sum_of_squares(task)-square_of_sum(task))
+print(abs(sum_of_squares(task)-square_of_sum(task)))
