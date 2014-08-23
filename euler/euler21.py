@@ -8,41 +8,41 @@ Evaluate the sum of all the amicable numbers under 10000.
 from math import ceil
 import datetime
 import operator
-
+    
 def create_div_dictionary(number):
-	dict = {}
-	for i in range(2,number+1):
-		div_list = [1]
-		for j in range(2, int(i**0.5)+1):
+    dict = {}
+    for i in range(2,number+1):
+        div_list = [1]
+        for j in range(2, int(i**0.5)+1):
             if i % j == 0:
-				div_list.append(j)
-				tmp = i / j
-				if tmp != j:
-					div_list.append(int(tmp))
-		dict[i] = div_list
-	return dict
+                div_list.append(j)
+                tmp = i / j
+                if tmp != j:
+                    div_list.append(int(tmp))
+        dict[i] = div_list
+    return dict
 
 def print_dict(dict):
-	for entry in dict:
-		print(entry, ":", dict[entry])
+    for entry in dict:
+        print(entry, ":", dict[entry])
 
 def create_div_sum_dictionary(dict):
-	new_dict = {}
-	for entry in dict:
-		new_dict[entry] = sum(dict[entry])
-	return new_dict
-		
+    new_dict = {}
+    for entry in dict:
+        new_dict[entry] = sum(dict[entry])
+    return new_dict
+        
 def find_amicables(number):
-	amicable = {}
-	dict = create_div_dictionary(number)
-	div_sum_dict = create_div_sum_dictionary(dict)
-	
-	for key in div_sum_dict:
-		for ami_key in div_sum_dict:
-			if key == div_sum_dict[ami_key] and ami_key == div_sum_dict[key] and key != ami_key:
-				if key not in amicable.values():
-					amicable[key] = ami_key
-	return amicable
+    amicable = {}
+    dict = create_div_dictionary(number)
+    div_sum_dict = create_div_sum_dictionary(dict)
+    
+    for key in div_sum_dict:
+        for ami_key in div_sum_dict:
+            if key == div_sum_dict[ami_key] and ami_key == div_sum_dict[key] and key != ami_key:
+                if key not in amicable.values():
+                    amicable[key] = ami_key
+    return amicable
 
 
 task = 10000

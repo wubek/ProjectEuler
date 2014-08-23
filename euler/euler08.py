@@ -26,19 +26,19 @@ Find the thirteen adjacent digits in the 1000-digit number that have the greates
 """
 def max_product_of_adjacent(lst, amount):
     max = 0
-	position = 0
-	for i in range(0,len(lst)-amount-1):
-		tmp = product_of_converted(lst, amount, i)
-		if  tmp > max:
-			max = tmp
-			position = i
-	return [max, position]
+    position = 0
+    for i in range(0,len(lst)-amount-1):
+        tmp = product_of_converted(lst, amount, i)
+        if  tmp > max:
+            max = tmp
+            position = i
+    return [max, position]
 
 def product_of_converted(lst, amount, position):
-	output = 1
-	for i in range(position, position+amount):
-		output *= int(lst[i])
-	return output
+    output = 1
+    for i in range(position, position+amount):
+        output *= int(lst[i])
+    return output
 
 lst = "73167176531330624919225119674426574742355349194934969835203127745063262395783180169848018694788518438586156078911294949545950173795833195285320880551112540698747158523863050715693290963295227443043557\
 66896648950445244523161731856403098711121722383113622298934233803081353362766142828064444866452387493035890729629049156044077239071381051585930796086670172427121883998797908792274921901699720888093776\

@@ -4,19 +4,19 @@ Find the sum of all the multiples of 3 or 5 below 1000.
 """
 
 def sum_of_multiples(limit, numbers):
-	lst = []
+    lst = []
     for number in numbers:
-		lst = find_multiples(limit, number, lst)
-	return sum(lst)
-	
+        lst = find_multiples(limit, number, lst)
+    return sum(lst)
+    
 def find_multiples(limit, num, lst):
-	new_lst = lst
-	i = 1
-	while i*num < limit:
-		if i*num not in new_lst:
-			new_lst.append(i*num)
-		i += 1
-	return new_lst
-	
+    new_lst = lst
+    i = 1
+    while i*num < limit:
+        if i*num not in new_lst:
+            new_lst.append(i*num)
+        i += 1
+    return new_lst
+    
 x = sum_of_multiples(1000, [3,5])
 print(x)

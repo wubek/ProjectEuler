@@ -10,9 +10,9 @@ sum_of_even = 0
 
 while element <= limit:
     if element % 2 == 0:
-		sum_of_even += element
-	fst_tmp = snd_tmp
-	snd_tmp = element
-	element = fst_tmp + snd_tmp
-	
+        sum_of_even += element
+    fst_tmp = snd_tmp
+    snd_tmp = element
+    element = fst_tmp + snd_tmp
+    
 print(sum_of_even)

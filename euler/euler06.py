@@ -11,13 +11,13 @@ Find the difference between the sum of the squares of the first one hundred natu
 
 def sum_of_squares(number):
     sum_of_squares = 0
-	for i in range(1,number+1):
-		sum_of_squares += i**2
-	return sum_of_squares
-	
+    for i in range(1,number+1):
+        sum_of_squares += i**2
+    return sum_of_squares
+    
 def square_of_sum(number):
-	square_of_sum = sum(range(1,number+1))
-	return square_of_sum**2
+    square_of_sum = sum(range(1,number+1))
+    return square_of_sum**2
 
 task = 100
 print(sum_of_squares(task)-square_of_sum(task))
