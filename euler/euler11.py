@@ -46,7 +46,7 @@ def max_of_4_el_mul_one_dim_table(table):
         max_of_table = max(reduce(operator.mul, table[i:i+4], 1), max_of_table)
     return max_of_table
 
-def check_all_directions(table):
+def find_max_product_of_4_adjacent(table):
     ''' Returns maximum result of multiplying 4 adjacent elements in two dimensional table, in every possible direction '''
     max_of_dirs = 0
 
@@ -73,6 +73,6 @@ if __name__=="__main__":
     with open("euler11.input", "r") as data_file:
         for line in data_file:
             data.append(map(int, line.split()))
-            
-    print check_all_directions(data)
+
+    print find_max_product_of_4_adjacent(data)
 
