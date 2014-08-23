@@ -40,6 +40,6 @@ def find_first_triangle_with_at_least_n_divisors(amount_of_divisors):
         if count_divisors(triangle) >= amount_of_divisors:
             return triangle
 
-if __name__=="__main__":
+if __name__ == "__main__":
     print(find_first_triangle_with_at_least_n_divisors(500))
     

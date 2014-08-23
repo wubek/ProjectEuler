@@ -17,7 +17,7 @@ def find_triples(sumOfNumbers):
             if i + j + k == sumOfNumbers:
                 return (i, j, int(k))
 
-if __name__=="__main__":
+if __name__ == "__main__":
     found = find_triples(1000)
     result = 1
     for i in found:

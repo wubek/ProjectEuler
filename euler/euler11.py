@@ -71,7 +71,7 @@ def find_max_product_of_4_adjacent(table):
 
     return max_of_dirs
 
-if __name__=="__main__":
+if __name__ == "__main__":
     data = []
     with open("euler11.input", "r") as data_file:
         for line in data_file:
