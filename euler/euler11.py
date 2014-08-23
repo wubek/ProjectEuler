@@ -43,7 +43,10 @@ def max_of_4_el_mul_one_dim_table(table):
     ''' Returns maximum result of multiplying 4 adjacent elements in one dimensional table '''
     max_of_table = 0
     for i in range(len(table) - 4):
-        max_of_table = max(reduce(operator.mul, table[i:i+4], 1), max_of_table)
+        temp = 1
+        for j in range(i, i + 4):
+            temp *= j
+        max_of_table = max(temp, max_of_table)
     return max_of_table
 
 def find_max_product_of_4_adjacent(table):
@@ -72,7 +75,7 @@ if __name__=="__main__":
     data = []
     with open("euler11.input", "r") as data_file:
         for line in data_file:
-            data.append(map(int, line.split()))
+            data.append([i for i in map(int, line.split())])
 
-    print find_max_product_of_4_adjacent(data)
+    print(find_max_product_of_4_adjacent(data))
 
