@@ -117,13 +117,13 @@ def adding_string_numbers(longs):
         temp = sum_column(longs, i, transfer)
         transfer = temp // 10
         result.append(str(temp % 10))
-        if i == 0:
-            out_of_range += transfer
-    for char in str(out_of_range):
+
+    for char in reversed(str(transfer)):
         result.append(char)
-    result.reverse()
-    for char in result:
+
+    for char in reversed(result):
         string_repr += char 
+
     return string_repr
 
 def get_first_n_digits_of_number(number, n):
