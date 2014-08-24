@@ -118,8 +118,9 @@ def adding_string_numbers(longs):
         transfer = temp // 10
         result.append(str(temp % 10))
 
-    for char in reversed(str(transfer)):
-        result.append(char)
+    if transfer > 0:
+        for char in reversed(str(transfer)):
+            result.append(char)
 
     for char in reversed(result):
         string_repr += char 
