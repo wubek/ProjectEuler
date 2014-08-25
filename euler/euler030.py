@@ -13,17 +13,17 @@ Find the sum of all the numbers that can be written as the sum of fifth powers o
 #I don't like how this problem is formulated, as I have no way to know where these numbers end...
 
 def sum_digit_power(number, power):
-	my_sum = 0
-	txt = str(number)
-	for digit in txt:
-		my_sum += int(digit)**power
-	return my_sum
+    my_sum = 0
+    txt = str(number)
+    for digit in txt:
+        my_sum += int(digit)**power
+    return my_sum
 
 if __name__ == "__main__":
-	lst = []
-	power = 5
-	for i in range(2,500000): #completely arbitrary, hail magic numbers!
-		if sum_digit_power(i, power) == i:
-			lst.append(i)
-	print(lst)
-	print("Answer:",sum(lst))
+    lst = []
+    power = 5
+    for i in range(2,500000): #completely arbitrary, hail magic numbers!
+        if sum_digit_power(i, power) == i:
+            lst.append(i)
+    print(lst)
+    print("Answer:",sum(lst))
