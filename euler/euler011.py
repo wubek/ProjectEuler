@@ -42,10 +42,10 @@ def get_diag(table, row, col, direction = "right"):
 def max_of_4_el_mul_one_dim_table(table):
     ''' Returns maximum result of multiplying 4 adjacent elements in one dimensional table '''
     max_of_table = 0
-    for i in range(len(table) - 4):
+    for i in range(len(table) - 3):
         temp = 1
         for j in range(i, i + 4):
-            temp *= j
+            temp *= table[j]
         max_of_table = max(temp, max_of_table)
     return max_of_table
 
