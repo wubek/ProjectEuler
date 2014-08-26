@@ -74,31 +74,32 @@ def third_smarter_brute(divMax):
             lst.append(i)
     base = smallest_product_brute_lst(base, 1, lst)
     return smallest_product_brute(base, 2520, divMax)
-    
-div = 20
+   
+if __name__ == "__main__":   
+    div = 20
 
-start = datetime.datetime.now()
-outcome = smallest_product_brute(1,1,div)
-timer = datetime.datetime.now() - start
-print("Brute:", outcome, timer)
+    start = datetime.datetime.now()
+    outcome = smallest_product_brute(1,1,div)
+    timer = datetime.datetime.now() - start
+    print("Brute:", outcome, timer)
 
-start = datetime.datetime.now()
-outcome = SmallestProduct(div)
-timer = datetime.datetime.now() - start
-print("SmallestProduct:", outcome, timer)
+    start = datetime.datetime.now()
+    outcome = SmallestProduct(div)
+    timer = datetime.datetime.now() - start
+    print("SmallestProduct:", outcome, timer)
 
-start = datetime.datetime.now()
-outcome = smallest_product_smarter_brute(div)
-timer = datetime.datetime.now() - start
-print("smallest_product_smarter_brute:", outcome, timer)
+    start = datetime.datetime.now()
+    outcome = smallest_product_smarter_brute(div)
+    timer = datetime.datetime.now() - start
+    print("smallest_product_smarter_brute:", outcome, timer)
 
 
-start = datetime.datetime.now()
-outcome = second_smarter_brute(div)
-timer = datetime.datetime.now() - start
-print("2nd_smallest_product_smarter_brute:", outcome, timer)
+    start = datetime.datetime.now()
+    outcome = second_smarter_brute(div)
+    timer = datetime.datetime.now() - start
+    print("2nd_smallest_product_smarter_brute:", outcome, timer)
 
-start = datetime.datetime.now()
-outcome = third_smarter_brute(div)
-timer = datetime.datetime.now() - start
-print("3rd_smallest_product_smarter_brute:", outcome, timer)
+    start = datetime.datetime.now()
+    outcome = third_smarter_brute(div)
+    timer = datetime.datetime.now() - start
+    print("3rd_smallest_product_smarter_brute:", outcome, timer)
