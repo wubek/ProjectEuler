@@ -31,21 +31,21 @@ def is_prime(number):
 def naive_prime_search(limit):
     return [x for x in range(2,limit+1) if is_prime(x)]
 
-    
-task = 2000000
+if __name__ == "__main__":    
+    task = 2000000
 
-print("Given number:", task)
+    print("Given number:", task)
 
-print("Naive: ")
-time = datetime.datetime.now()
-print("Output:", sum(naive_prime_search(task)))
-time = datetime.datetime.now() - time
-print("Time:", time)
+    print("Naive: ")
+    time = datetime.datetime.now()
+    print("Output:", sum(naive_prime_search(task)))
+    time = datetime.datetime.now() - time
+    print("Time:", time)
 
-print("Eratosthenes sieve: ")
-time = datetime.datetime.now()
-print("Output:", sum(bool_to_int_lst(eratosthenes_sieve(task))))
-time = datetime.datetime.now() - time
-print("Time:", time)
+    print("Eratosthenes sieve: ")
+    time = datetime.datetime.now()
+    print("Output:", sum(bool_to_int_lst(eratosthenes_sieve(task))))
+    time = datetime.datetime.now() - time
+    print("Time:", time)
 
 
