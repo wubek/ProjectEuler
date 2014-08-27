@@ -9,23 +9,39 @@ It is possible to make L2 in the following way:
 How many different ways can L2 be made using any number of coins?
 '''
 
-def generate_possibilities(coins, value, list_of_coins_usage2, act = 0):
-    print(value, list_of_coins_usage2, act)
-    list_of_coins_usage = []
-    for i in list_of_coins_usage2:
-        list_of_coins_usage.append(i)
+def generate_possibilities(coins, value, used = 0):
+    print(value, used)
     if value == 0:
-        yield list_of_coins_usage
+        yield [0 for i in range(len(coins))]
+    else:
+        for which_coin in range(len(coins) - used - 1, -1, -1):
+            #print(which_coin)
+            actual_coin = coins[which_coin]
+            if actual_coin > 1:
+         #   print(actual_coin)
+                #print([i for i in range(value // actual_coin, 0, -1)])
+                for take_this_many_times in range(value // actual_coin, 0, -1):
+                    if value - take_this_many_times*actual_coin > 0:
+                        for temp in generate_possibilities(coins, value - take_this_many_times*actual_coin, used + 1):
+                            list_of_coins_usage = [0 for i in range(len(coins))]
+                            list_of_coins_usage[which_coin] = take_this_many_times
+                            for i in range(len(temp)):
+                                list_of_coins_usage[i] += temp[i]
+                            yield list_of_coins_usage
+                    else:
+                        list_of_coins_usage = [0 for i in range(len(coins))]
+                        list_of_coins_usage[which_coin] = take_this_many_times
+                        yield list_of_coins_usage
+            else:
+                list_of_coins_usage = [0 for i in range(len(coins))]
+                list_of_coins_usage[which_coin] = value
+                yield list_of_coins_usage
 
-    for i in range(1, len(coins) - act):
-        actual_coin = coins[len(coins) - i - 1]
-        for j in range(value // actual_coin, 0, -1):
-            list_of_coins_usage[len(coins) - i - 1] += j
-            for pos in generate_possibilities(coins, value - j *  actual_coin, list_of_coins_usage, act + 1):
-                yield pos
 
 if __name__ == '__main__':
     coins = {0: 1, 1: 2, 2: 5, 3: 10, 4: 20, 5: 50, 6: 100, 7: 200}
-    print(set({1: "d"}))
-    for pos in generate_possibilities(coins, 10, [0, 0, 0, 0, 0, 0, 0]):
+    res = set()
+    for pos in generate_possibilities(coins, 10):
+        res.add(tuple(pos))
         print(pos)
+    print(len(res))
