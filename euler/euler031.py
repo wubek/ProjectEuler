@@ -9,39 +9,28 @@ It is possible to make L2 in the following way:
 How many different ways can L2 be made using any number of coins?
 '''
 
-def generate_possibilities(coins, value, used = 0):
-    print(value, used)
+def generate_possibilities(coins_values, coins_amount, value):
     if value == 0:
-        yield [0 for i in range(len(coins))]
+        yield [0 for i in range(len(coins_values))]
     else:
-        for which_coin in range(len(coins) - used - 1, -1, -1):
-            #print(which_coin)
-            actual_coin = coins[which_coin]
-            if actual_coin > 1:
-         #   print(actual_coin)
-                #print([i for i in range(value // actual_coin, 0, -1)])
-                for take_this_many_times in range(value // actual_coin, 0, -1):
-                    if value - take_this_many_times*actual_coin > 0:
-                        for temp in generate_possibilities(coins, value - take_this_many_times*actual_coin, used + 1):
-                            list_of_coins_usage = [0 for i in range(len(coins))]
-                            list_of_coins_usage[which_coin] = take_this_many_times
-                            for i in range(len(temp)):
-                                list_of_coins_usage[i] += temp[i]
-                            yield list_of_coins_usage
-                    else:
-                        list_of_coins_usage = [0 for i in range(len(coins))]
-                        list_of_coins_usage[which_coin] = take_this_many_times
-                        yield list_of_coins_usage
-            else:
-                list_of_coins_usage = [0 for i in range(len(coins))]
-                list_of_coins_usage[which_coin] = value
-                yield list_of_coins_usage
+        while coins_amount:
+            actual_coin = coins_amount
+            if value >= coins_values[actual_coin]:
+                for i in range(value // coins_values[actual_coin], 0, -1):
+                    actual_value = value - i * coins_values[actual_coin]
+                    temp = generate_possibilities(coins_values, coins_amount - 1, actual_value)
+                    for el in temp:
+                        el[actual_coin] += i
+                        yield el
+            coins_amount -= 1
+        temp = [0 for i in range(len(coins_values))]
+        temp[0] = value
+        yield temp
 
 
 if __name__ == '__main__':
-    coins = {0: 1, 1: 2, 2: 5, 3: 10, 4: 20, 5: 50, 6: 100, 7: 200}
-    res = set()
-    for pos in generate_possibilities(coins, 10):
-        res.add(tuple(pos))
-        print(pos)
-    print(len(res))
+    coins_values = {0: 1, 1: 2, 2: 5, 3: 10, 4: 20, 5: 50, 6: 100, 7: 200}
+    count = 0
+    for pos in generate_possibilities(coins_values, 7, 200):
+        count += 1
+    print(count)
