@@ -9,6 +9,8 @@ It is possible to make L2 in the following way:
 How many different ways can L2 be made using any number of coins?
 '''
 
+# it's not good, created values should be stored (dict of lists of lists) and then used again 
+# but it's good enought for this problem, so let leave it 
 def generate_possibilities(coins_values, coins_amount, value):
     if value == 0:
         yield [0 for i in range(len(coins_values))]
