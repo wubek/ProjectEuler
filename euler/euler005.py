@@ -44,6 +44,8 @@ def SmallestProduct(divMax):
 # ------------------
 
 def is_prime(number):
+    if number <= 1:
+        return False
     counter = 2
     while counter**2 <= number:
         if number % counter == 0:
