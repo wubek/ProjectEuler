@@ -41,4 +41,4 @@ if __name__ == "__main__":
     # Uses python property - having big range long numbers
     print(add_digits_in_number(2**1000))
     # Using stringss
-    print(add_digits_in_str_number(power_on_strings(1000)))
+    print(add_digits_in_str_number(power_2_on_strings(1000)))
