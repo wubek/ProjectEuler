@@ -17,6 +17,5 @@ def solve(n, numTo):
         sum_of_nums += power_only_last_n_digits(i, i)
     return sum_of_nums % 10 ** n
 
-
 if __name__ == '__main__':
     print(solve(10, 1000))
