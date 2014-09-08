@@ -24,8 +24,8 @@ def mul_str_number_and_2(str_number):
 
     return string_repr
 
-def power_on_strings(base, exponent):
-    act = base
+def power_2_on_strings(exponent):
+    act = "2"
     for i in range(exponent - 1):
         act = mul_str_number_and_2(act)
     return act
@@ -41,4 +41,4 @@ if __name__ == "__main__":
     # Uses python property - having big range long numbers
     print(add_digits_in_number(2**1000))
     # Using stringss
-    print(add_digits_in_str_number(power_on_strings("2", 1000)))
+    print(add_digits_in_str_number(power_on_strings(1000)))
