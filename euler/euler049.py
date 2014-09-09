@@ -8,23 +8,47 @@ What 12-digit number do you form by concatenating the three terms in this sequen
 '''
 
 from euler005 import is_prime
-from euler024 import generate_parmutations_recursive
 from euler041 import make_num
 
-def gen_sequences(set_of_nums, first_num):
-    pass
+def generate_parmutations_recursive_better(so_far, rest):
+    if rest:
+        for i in range(len(rest)):
+            element = rest[i]
+            for t in generate_parmutations_recursive_better(so_far + [element], [rest[j] for j in range(len(rest)) if i != j]):
+                yield t
+    else:
+        yield so_far
 
-def check_number(number):
+def check_number(number, used):
     permutations = set()
-    for num_list in generate_parmutations_recursive([], map(lambda x: ord(x) - ord("0"),str(number))):
+    for num_list in generate_parmutations_recursive_better([], map(lambda x: ord(x) - ord("0"), str(number))):
         permutations.add(make_num(num_list))
-    pass
+    used.update(permutations)
+    
+    list_of_permutations = list(permutations)
+    list_of_permutations.sort()
+    
+    for i in range(len(list_of_permutations) - 2):
+        first = list_of_permutations[i]
+        if first > 1000 and is_prime(first):
+            for j in range(i + 1, len(list_of_permutations) - 1):
+                second = list_of_permutations[j]
+                if is_prime(second):
+                    for k in range(j + 1, len(list_of_permutations)):
+                        third = list_of_permutations[k]
+                        if is_prime(third):
+                            if 2*second == first + third:
+                                return (first, second, third)
+        
+def solve():
+    used = set()
+    for i in range(1234, 3333):
+        if i not in used and is_prime(i):
+            temp = check_number(i, used)
+            if temp and temp != (1487, 4817, 8147):
+                print(temp)
 
 if __name__ == '__main__':
-    for i in range(1234, 3333):
-        if is_prime(i):
-            temp = check_number(i)
-            if temp:
-                print(temp)
-            
+    solve()
+    
 
