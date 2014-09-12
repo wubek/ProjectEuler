@@ -1,6 +1,8 @@
 # author wukat
 '''
-Starting in the top left corner of a 2x2 grid, and only being able to move to the right and down, there are exactly 6 routes to the bottom right corner.
+Starting in the top left corner of a 2x2 grid, and only being able 
+to move to the right and down, there are exactly 6 routes 
+to the bottom right corner.
 
 https://projecteuler.net/project/images/p015.gif
 
@@ -32,7 +34,8 @@ after:
  4  3  2  1
  1  1  1  1
 
-so possible paths amount is a sum of right and down elemnts (or one of them, if second doesn't exist).
+so possible paths amount is a sum of right and down elemnts 
+(or one of them, if second doesn't exist).
 '''
 
 def make_init_possible_paths_amount(size):

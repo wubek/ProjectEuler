@@ -1,6 +1,7 @@
 # author wukat
 '''
-In England the currency is made up of pound, L, and pence, p, and there are eight coins in general circulation:
+In England the currency is made up of pound, L, and pence, 
+p, and there are eight coins in general circulation:
 
 1p, 2p, 5p, 10p, 20p, 50p, L1 (100p) and L2 (200p).
 It is possible to make L2 in the following way:

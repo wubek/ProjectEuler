@@ -10,7 +10,8 @@ Find the product abc.
 '''
 
 def find_triples(sumOfNumbers):
-    ''' Returns tuple (i, j, k) that i ** 2 + j ** 2 = k ** 2 and i + j + k = sumOfNumbers; (i < j < k)'''
+    ''' Returns tuple (i, j, k) that i ** 2 + j ** 2 = k ** 2 
+    and i + j + k = sumOfNumbers; (i < j < k)'''
     for i in range(1, int(sumOfNumbers/3)):
         for j in range(i + 1, int(2*sumOfNumbers/3)):
             k = (i**2 + j**2) ** 0.5
