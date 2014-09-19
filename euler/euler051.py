@@ -9,7 +9,7 @@ family: 56003, 56113, 56333, 56443, 56663, 56773, and 56993. Consequently 56003,
 the first member of this family, is the smallest prime with this property.
 
 Find the smallest prime which, by replacing part of the number (not necessarily adjacent 
-    digits) with the same digit, is part of an eight prime value family.
+digits) with the same digit, is part of an eight prime value family.
 '''
 
 from euler050 import eratosthenes_sieve_compr
