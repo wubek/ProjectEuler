@@ -23,8 +23,6 @@ spiral for which the ratio of primes along both diagonals
 first falls below 10%?
 '''
 
-import datetime
-
 def is_prime(number):
     if number == 2:
         return True
@@ -61,7 +59,6 @@ def generate_spiral_diagonals():
             step += 1
 
 if __name__ == '__main__':
-    start = datetime.datetime.now()
     count, primes_count = 0, 0
     for i in generate_spiral_diagonals():
         if is_prime(i):
@@ -71,4 +68,3 @@ if __name__ == '__main__':
             if primes_count * 10 < count:
                 print(((count + 1) / 2))
                 break
-    print(datetime.datetime.now() - start)
