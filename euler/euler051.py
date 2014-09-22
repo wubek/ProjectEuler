@@ -45,4 +45,5 @@ def is_primes_family(prime):
 
 if __name__ == '__main__':
     # print(find_primes_families())
-    print(is_primes_family(56003))
+    # print(is_primes_family(56003))
+    print(eratosthenes_sieve_compr(9999))
