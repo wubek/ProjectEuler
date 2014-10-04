@@ -85,12 +85,7 @@ def obtain_index_without_0(num, list_of_list):
         if num in list_of_list[i]:
             return i
 
-# so ugly, so sad
-def solve():
-    list_of_list = [make_4_digits_list(gen_triangles()), 
-        make_4_digits_list(gen_squares()), make_4_digits_list(gen_pentagonals()), 
-        make_4_digits_list(gen_hexagonals()), make_4_digits_list(gen_heptagonals()),
-        make_4_digits_list(gen_octagonals())]
+def make_list_of_dicts(list_of_list):
     tr_dict = make_dict(list_of_list[0], sum(list_of_list[1:], []))
     sq_dict = make_dict(list_of_list[1], sum(list_of_list[2:], []))
     pe_dict = make_dict(list_of_list[2], list_of_list[1] + sum(list_of_list[3:], []))
@@ -98,24 +93,33 @@ def solve():
     hp_dict = make_dict(list_of_list[4], sum(list_of_list[1:4], []) + list_of_list[5])
     oc_dict = make_dict(list_of_list[5], sum(list_of_list[1:5], []))
 
-    list_of_dicts = [tr_dict, sq_dict, pe_dict, hx_dict, hp_dict, oc_dict]
-    for tr in tr_dict:
-        for t in tr_dict[tr]:
-            ind = obtain_index_without_0(t, list_of_list)
-            for k in list_of_dicts[ind][t]:
-                ind2 = obtain_index_without_0(k, list_of_list)
-                if ind2 != ind and ind2 != 0:
-                    for j in list_of_dicts[ind2][k]:
-                        ind3 = obtain_index_without_0(j, list_of_list)
-                        if ind3 != ind2 and ind3 != ind and ind3 != 0:
-                            for l in list_of_dicts[ind3][j]:
-                                ind4 = obtain_index_without_0(l, list_of_list)
-                                if ind4 not in [ind3, ind2, ind, 0]:
-                                    for m in list_of_dicts[ind4][l]:
-                                        ind5 = obtain_index_without_0(m, list_of_list)
-                                        if ind5 not in [0, ind, ind2, ind3, ind4]:
-                                            if are_equal_2_last_2_first(m, tr):
-                                                return tr + t + k + j + l + m
+    return [tr_dict, sq_dict, pe_dict, hx_dict, hp_dict, oc_dict]
+
+def cos(el, dicts, list_of_list, indexes, elements):
+    ind = obtain_index_without_0(el, list_of_list)
+    if len(indexes) == 5:
+        if ind not in indexes:
+            if are_equal_2_last_2_first(el, elements[0]):
+                return sum(elements)
+    if ind not in indexes:
+        for n in dicts[ind][el]:
+            temp = cos(n, dicts, list_of_list, indexes + [ind], elements + [n])
+            if temp:
+                return temp
+
+def solve():
+    list_of_list = [make_4_digits_list(gen_triangles()), 
+        make_4_digits_list(gen_squares()), make_4_digits_list(gen_pentagonals()), 
+        make_4_digits_list(gen_hexagonals()), make_4_digits_list(gen_heptagonals()),
+        make_4_digits_list(gen_octagonals())]
+
+    list_of_dicts = make_list_of_dicts(list_of_list)
+
+    for tr in list_of_dicts[0]:
+        for t in list_of_dicts[0][tr]:
+            temp = cos(t, list_of_dicts, list_of_list, [0], [tr, t])
+            if temp: 
+                return temp
 
 if __name__ == '__main__':
     print(solve())
