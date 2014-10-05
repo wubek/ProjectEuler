@@ -9,29 +9,25 @@ Find the smallest cube for which exactly five permutations
 of its digits are cube.
 '''
 
-from itertools import permutations
-from math import floor
-
-# try other way round
-def is_cube(num):
-    temp = num ** (1 / 3.0)
-    return not num - round(temp) ** 3
-
-def has_five_cube_permutations(num):
-    count, used = 0, set()
-    for num in permutations(str(num)):
-        if num not in used:
-            if is_cube(int("".join(num))):
-                count += 1
-            used.add(num)
-    if count == 5:
-        return True
+def make_special_num(num):
+    list_of_digit_occurances, res = [0 for i in range(10)], ""
+    for i in str(num):
+        list_of_digit_occurances[int(i)] += 1
+    for i in range(9, -1, -1):
+        res += str(i) + str(list_of_digit_occurances[i])
+    return res
 
 def solve():
-    num = 350
-    while not has_five_cube_permutations(num ** 3):
+    dictionary_of_special, num = {}, 100
+    while True:
+        special = make_special_num(num ** 3)
+        if special in dictionary_of_special:
+            dictionary_of_special[special].append(num)
+            if len(dictionary_of_special[special]) == 5:
+                return dictionary_of_special[special][0] ** 3
+        else:
+            dictionary_of_special[special] = [num]
         num += 1
-    return num
 
 if __name__ == '__main__':
     print(solve())
