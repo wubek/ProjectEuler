@@ -57,8 +57,12 @@ def get_period(num):
         past_tuples_list.append((a, up, b))
 
 def is_square(num):
-    ''' Only for num > 2 '''
-    return not num % round(num ** (1/2.0)) ** 2
+    h = num & 0xF
+    if h > 9:
+        return False
+    if h != 2 and h != 3 and h != 5 and h != 6 and h != 7 and h != 8:
+        return not num % round(num ** (1/2.0)) ** 2
+    return False
 
 def solve(limit):
     count = 1

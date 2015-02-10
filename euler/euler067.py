@@ -18,11 +18,11 @@ route to solve this problem, as there are 299 altogether! If you could check one
 There is an efficient algorithm to solve it. ;o)
 '''
 
-import euler18
+import euler018
 
 if __name__ == "__main__":
     data = []
     with open("euler67.input", "r") as input_data:
         for line in input_data:
             data.append(list(map(int, line.split())))
-    print(euler18.solve_dynamically_from_bottom(data))
+    print(euler018.solve_dynamically_from_bottom(data))
